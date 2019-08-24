@@ -1,0 +1,38 @@
+/* Background color: 3d100b */
+/* Alternate Background: #B0463A */
+/* Tan (button) color: #e4d0c3 */
+/* <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet"> */
+/* font-family: 'Beth Ellen', cursive; */
+body {
+  background-color: #3d100b;
+}
+
+#mainLogoCol {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#hogwartsCol {
+  margin-right: auto;
+  margin-left: auto;
+  align-content: center;
+}
+
+#mainLogo {
+  width: 100%;
+}
+#hogwartsLogo {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+}
+
+#paragraphCol {
+  background-color: #e4d0c3;
+  border-radius: 25px;
+  font-size: 140%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Beth Ellen', cursive;
+}
