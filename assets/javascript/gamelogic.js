@@ -65,8 +65,8 @@ function findGifs(searchTerm) {
 
     var $newRow = $('<div class="row">')
     for (var i = 0; i < total; i++){
-      var $newCol = $('<div class="col-md-3 gifCards">');
-      var $newImage = $('<img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill data-gifAnimated="' + response.data[i].images.fixed_height + '">');
+      var $newCol = $('<div class="col-md-3 gifCard">');
+      var $newImage = $('<img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill" data-gifAnimated="' + response.data[i].images.fixed_height + '">');
       var $newRating = $('<p >' + response.data[i].rating + '<p>')
       $newCol.append($newImage);
       $newCol.append($newRating);
@@ -106,4 +106,8 @@ $('.gifButton').on('click', function(){
   findGifs(searchTerm);
 })
 
-
+$('.gifStill').on('click', function() {
+  var temp = $(this).attr('data-gifAnimated');
+  $(this).attr('data-gifAnimated', this.attr('src'));
+  $(this).attr('src', temp);
+})

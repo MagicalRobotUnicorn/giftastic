@@ -84,7 +84,17 @@ body {
   font-size: 2.5rem;
 }
 
+
 .gifButton {
   text-transform: capitalize;
+}
 
+.gifCard {
+  background-color: #e4d0c3;
+  border-radius: 25px;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  
 }
