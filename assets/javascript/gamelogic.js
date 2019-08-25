@@ -66,8 +66,8 @@ function findGifs(searchTerm) {
     var $newRow = $('<div class="row">')
     for (var i = 0; i < total; i++){
       var $newCol = $('<div class="col-md-3 gifCard">');
-      var $newImage = $('<img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill" data-gifAnimated="' + response.data[i].images.fixed_height + '">');
-      var $newRating = $('<p >' + response.data[i].rating + '<p>')
+      var $newImage = $('<div class="gifImageDiv"><img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill" data-gifAnimated="' + response.data[i].images.fixed_height.url + '"></div>');
+      var $newRating = $('<div class="gifRatingDiv"><center><img src="./assets/images/filmratings/' + response.data[i].rating + '.png"></div>')
       $newCol.append($newImage);
       $newCol.append($newRating);
       $newRow.append($newCol);
@@ -88,13 +88,28 @@ function findGifs(searchTerm) {
 }
 
 function createButton(value) {
-  var $newButton = $('<button class="gifButton">');
+
+  var $newButtonDiv = $('<div class="col-md-1>');
+  var $newButton = $('<button type="button" class="btn btn-outline-dark gifButton">');
   $newButton.attr('id', value);
 
   $newButton.text(value);
 
-  $('#buttonSection').append($newButton);
+  $newButtonDiv.append($newButton);
+  $('#preparedSpells').append($newButton);
 }
+
+function initialButtons() {
+  var autoButtons = ['magical', 'robot', 'unicorn', 'javascript', 'python', 'NodeJs', 'Linux', 'Oregon'];
+
+  for (var i =0; i < autoButtons.length; i++){
+    createButton(autoButtons[i]);
+  }
+}
+
+$(document).ready(function() {
+  initialButtons();
+});
 
 $('.gifStill').on('click', function() {
 
@@ -106,8 +121,13 @@ $('.gifButton').on('click', function(){
   findGifs(searchTerm);
 })
 
-$('.gifStill').on('click', function() {
+$('body').on('click', 'img.gifStill', function() {
   var temp = $(this).attr('data-gifAnimated');
-  $(this).attr('data-gifAnimated', this.attr('src'));
+  $(this).attr('data-gifAnimated', $(this).attr('src'));
   $(this).attr('src', temp);
 })
+
+$("body").on("click", "button.btn.btn-outline-dark.gifButton", function () {
+  var searchTerm = $(this).attr('id');
+  findGifs(searchTerm);
+});
