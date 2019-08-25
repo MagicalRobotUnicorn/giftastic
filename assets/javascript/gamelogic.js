@@ -60,17 +60,29 @@ function findGifs(searchTerm) {
       total = 10;
     }
 
+    console.log('Total: ' + total);
     var rowTotal = 0;
 
     var $newRow = $('<div class="row">')
     for (var i = 0; i < total; i++){
-      var $newCol = $('<div class="row-md-3">');
-      var $newImage = $('<img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill data-gifAnimated="' + ">');
+      var $newCol = $('<div class="col-md-3 gifCards">');
+      var $newImage = $('<img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill data-gifAnimated="' + response.data[i].images.fixed_height + '">');
       var $newRating = $('<p >' + response.data[i].rating + '<p>')
       $newCol.append($newImage);
       $newCol.append($newRating);
+      $newRow.append($newCol);
+      rowTotal++;
 
+      console.log(rowTotal);
+      if (rowTotal > 2) {
+        $('#gifDisplay').append($newRow);
+        $newRow = $('<div class="row">')
+        rowTotal = 0;
+      }
 
+      if (i === (total -1)){
+        $(gifDisplay).append($newRow);
+      }
     }
   });
 }
@@ -86,6 +98,12 @@ function createButton(value) {
 
 $('.gifStill').on('click', function() {
 
+});
+
+$('.gifButton').on('click', function(){
+  var searchTerm = $(this).attr('id');
+
+  findGifs(searchTerm);
 })
 
 
