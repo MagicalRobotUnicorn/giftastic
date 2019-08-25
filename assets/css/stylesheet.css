@@ -3,6 +3,8 @@
 /* Tan (button) color: #e4d0c3 */
 /* <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet"> */
 /* font-family: 'Beth Ellen', cursive; */
+/* font-family: 'Pirata One', cursive; */
+
 body {
   background-color: #3d100b;
 }
@@ -67,7 +69,6 @@ body {
 }
 
 #gifmagicImage:hover {
-
   box-shadow: 10px 10px 5px grey;
 }
 
@@ -77,3 +78,9 @@ body {
   float: right;
   border-radius: 10px;
 }
+
+#fakeTextbook {
+  font-family: 'Pirata One', cursive;
+  font-size: 2.5rem;
+}
+
