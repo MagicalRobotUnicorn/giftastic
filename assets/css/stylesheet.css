@@ -82,11 +82,17 @@ body {
 #fakeTextbook {
   font-family: 'Pirata One', cursive;
   font-size: 2.5rem;
+  margin: 20px;
 }
 
 
 .gifButton {
   text-transform: capitalize;
+  font-family: 'Pirata One', cursive;
+  font-size: 170%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
 }
 
 .gifCard {
@@ -118,4 +124,32 @@ body {
 .gifRatingDiv {
   margin-top: 15px;
   margin-bottom: auto;
+}
+
+#typeSpell {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#preparedSpells {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#spellInput {
+  width: 40%;
+  margin-right: 50px;
+  margin-left: auto;
+}
+
+#prepareSpell {
+  display: inline-block;
+  margin-right: auto;
+}
+
+.spellButtonDivs {
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
 }

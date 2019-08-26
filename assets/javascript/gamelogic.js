@@ -48,6 +48,7 @@ function displayHouse(response) {
 function findGifs(searchTerm) {
   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=T9x1MWUOUhdZlJPCkwFiuhWl4Rpcewza&q=" + searchTerm;
   
+  $('#gifDisplay').html('');
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -60,7 +61,6 @@ function findGifs(searchTerm) {
       total = 10;
     }
 
-    console.log('Total: ' + total);
     var rowTotal = 0;
 
     var $newRow = $('<div class="row">')
@@ -73,7 +73,6 @@ function findGifs(searchTerm) {
       $newRow.append($newCol);
       rowTotal++;
 
-      console.log(rowTotal);
       if (rowTotal > 2) {
         $('#gifDisplay').append($newRow);
         $newRow = $('<div class="row">')
@@ -89,14 +88,14 @@ function findGifs(searchTerm) {
 
 function createButton(value) {
 
-  var $newButtonDiv = $('<div class="col-md-1>');
-  var $newButton = $('<button type="button" class="btn btn-outline-dark gifButton">');
+  var $newButtonDiv = $('<div class="col-md-2 spellButtonDivs">');
+  var $newButton = $('<button type="button" class="btn btn-warning gifButton">');
   $newButton.attr('id', value);
 
   $newButton.text(value);
 
   $newButtonDiv.append($newButton);
-  $('#preparedSpells').append($newButton);
+  $('#preparedSpells').append($newButtonDiv);
 }
 
 function initialButtons() {
@@ -116,6 +115,8 @@ $('.gifStill').on('click', function() {
 });
 
 $('.gifButton').on('click', function(){
+  $('#gifDisplay').html('');
+
   var searchTerm = $(this).attr('id');
 
   findGifs(searchTerm);
@@ -127,7 +128,14 @@ $('body').on('click', 'img.gifStill', function() {
   $(this).attr('src', temp);
 })
 
-$("body").on("click", "button.btn.btn-outline-dark.gifButton", function () {
+$("body").on("click", "button.btn.btn-warning.gifButton", function () {
   var searchTerm = $(this).attr('id');
   findGifs(searchTerm);
+});
+
+$("body").on("click", "button#prepareSpell.btn.btn-primary", function() {
+  var newSpell = $('#spellInput').val();
+
+  createButton(newSpell);
+
 });
