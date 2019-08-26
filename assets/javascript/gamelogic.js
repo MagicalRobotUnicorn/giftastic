@@ -31,6 +31,10 @@ function sortingHat(){
   });
 }
 
+$('#clicktoSort').on("click", function() {
+  sortingHat();
+});
+
 function displayHouse(response) {
   var queryURL = 'https://api.giphy.com/v1/gifs/' + houses[response] + '?api_key=T9x1MWUOUhdZlJPCkwFiuhWl4Rpcewza';
 
@@ -38,7 +42,9 @@ function displayHouse(response) {
     url: queryURL,
     method: "GET"
   }). then(function(response) {
-    $('#houseGif').append(('<div id="resultGifDiv"><img src="' + response.data.images.original.url  + '" id="resultGif"></div>'));
+    // $('#houseGif').append(('<div id="resultGifDiv"><img src="' + response.data.images.original.url  + '" id="resultGif"></div>'));
+    $('#houseImage').attr('src', response.data.images.original.url);
+    flipCard();
   });
 }
 
@@ -99,7 +105,7 @@ function createButton(value) {
 }
 
 function initialButtons() {
-  var autoButtons = ['magical', 'robot', 'unicorn', 'javascript', 'python', 'NodeJs', 'Linux', 'Oregon'];
+  var autoButtons = ['magical', 'robot', 'unicorn', 'javascript', 'python', 'Node Js', 'Linux', 'Oregon'];
 
   for (var i =0; i < autoButtons.length; i++){
     createButton(autoButtons[i]);
@@ -136,6 +142,21 @@ $("body").on("click", "button.btn.btn-warning.gifButton", function () {
 $("body").on("click", "button#prepareSpell.btn.btn-primary", function() {
   var newSpell = $('#spellInput').val();
 
+  $('#spellInput').val('');
   createButton(newSpell);
 
 });
+
+// Flip sorting hat function
+function flipCard() {
+  // setTimeout(wait, 300);
+  var userCard = document.getElementById('houseReveal');
+  userCard.classList.add('flip-card-inner');
+}
+
+// TODO:
+// Import flipping script from RPS
+// Add Home buttons to both screens
+// Refactor Code to include two JS files, two css
+// Write comments
+// Write Readme
