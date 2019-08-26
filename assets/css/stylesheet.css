@@ -1,4 +1,5 @@
 
+/* General Style */
 body {
   background-color: #3d100b;
 }
@@ -41,7 +42,6 @@ body {
 }
 
 #sortingButton {
-  /* margin-right: auto; */
   margin-left: 10%;
   float: left;
 }
@@ -52,7 +52,6 @@ body {
   width: 40%;
 }
 #sortingImage:hover {
-
   box-shadow: 10px 10px 5px grey;
 }
 
@@ -67,7 +66,6 @@ body {
 }
 
 #gifmagicButton {
-  /* margin-left: auto; */
   margin-right: 10%;
   float: right;
   border-radius: 10px;
@@ -79,7 +77,7 @@ body {
   margin: 20px;
 }
 
-
+/* GIF Magic Styles */
 .gifButton {
   text-transform: capitalize;
   font-family: 'Pirata One', cursive;
@@ -94,9 +92,7 @@ body {
 .gifCard {
   background-color: #e4d0c3;
   border-radius: 25px;
-
   margin-top: 15px;
-
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
@@ -165,6 +161,7 @@ body {
 #houseImage {
   margin-top: 75px;
 }
+
 /* Flip card styles */
 #cardBack {
   width: 280px;
@@ -187,12 +184,10 @@ body {
   height: 469px;
   border: 1px solid #f1f1f1;
   border-radius: 25px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  /* margin-left: auto;
-  margin-right: auto; */
+  perspective: 1000px;
+
  }
 
-/* This container is needed to position the front and back side */
  .flip-card-inner {
   border-radius: 25px;
   position: relative;
@@ -203,17 +198,10 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-/* ORIGINAL HOVER CODE */
-/* .flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-} */
-
 .flip-card .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
@@ -221,16 +209,12 @@ body {
   backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  /* background-color: #bbb; */
   color: black;
   margin: auto;
 }
 
-/* Style the back side */
 .flip-card-back {
-  /* background-color: black; */
   color: white;
   font-family: 'Special Elite', cursive;
   transform: rotateY(180deg);
