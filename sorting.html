@@ -11,24 +11,22 @@
 <body>
 
   <div class="container">
+
     <div class="row">
       <div class="col-md-10" id="mainLogoCol">
         <img src="./assets/images/sorting.png" id="mainLogo">
       </div>
     </div>
+
     <div class="row" id="card-row">
-      <div class="col-md-2"></div>
-      <div class="col-md-4">
+      <div class="col-md-4" id="cardColumn">
         <div class="flip-card">
-          <!-- removed flip card inner class -->
           <div id="houseReveal">
             <div class="flip-card-front">
-              <img src="./assets/images/cardback.jpg" alt="cardback" class="w3-round-xl" id="card1" style="width:300px">
-              <!-- style="width:300px;height:300px; -->
+              <img src="./assets/images/cardback.jpg" alt="cardback" class="w3-round-xl" id="cardBack">
             </div>
             <div class="flip-card-back">
-              <!-- Choose your weapon! -->
-              <img id="houseImage" src="" style="width:250px">>
+              <img id="houseImage" src="" style="width:250px">
             </div>
           </div>
         </div>
@@ -37,12 +35,14 @@
 
     <div class="row">
       <div class="col-md-6" id="buttonCol">
-        <div id="sortingButtons"></div>
-        <button id="clicktoSort">Click to Sort</button>
+        <div id="sortingButtons">
+            <button type="button" class="btn btn-primary" id="clicktoSort">Get Sorted!</button>
+            <button type="button" class="btn btn-primary" id="returnHome" onclick="location.href='./index.html';">Return Home</button>
+        </div>
       </div>
     </div>
   </div>
-  <script></script>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./assets/javascript/gamelogic.js"></script>
 </body>

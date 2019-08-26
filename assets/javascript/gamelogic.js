@@ -35,6 +35,7 @@ $('#clicktoSort').on("click", function() {
   sortingHat();
 });
 
+
 function displayHouse(response) {
   var queryURL = 'https://api.giphy.com/v1/gifs/' + houses[response] + '?api_key=T9x1MWUOUhdZlJPCkwFiuhWl4Rpcewza';
 
@@ -116,10 +117,6 @@ $(document).ready(function() {
   initialButtons();
 });
 
-$('.gifStill').on('click', function() {
-
-});
-
 $('.gifButton').on('click', function(){
   $('#gifDisplay').html('');
 
@@ -147,11 +144,12 @@ $("body").on("click", "button#prepareSpell.btn.btn-primary", function() {
 
 });
 
+
 // Flip sorting hat function
 function flipCard() {
-  // setTimeout(wait, 300);
   var userCard = document.getElementById('houseReveal');
-  userCard.classList.add('flip-card-inner');
+  userCard.classList.remove('flip-card-inner');
+  setTimeout(userCard.classList.add('flip-card-inner'), 2000);
 }
 
 // TODO:
