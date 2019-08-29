@@ -25,7 +25,7 @@ function findGifs(searchTerm) {
     for (var i = 0; i < total; i++){
       var $newCol = $('<div class="col-md-3 gifCard">');
       var $newImage = $('<div class="gifImageDiv"><img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill" data-gifAnimated="' + response.data[i].images.fixed_height.url + '"></div>');
-      var $newDate = $('<div class="gifUploadDiv">Upload Date: ' + response.data[i].import_datetime + '</div>');
+      var $newDate = $('<div class="gifUploadDiv">Upload Date: ' + moment((response.data[i].import_datetime).substring(0, 10)).format("MMMM D, YYYY") + '</div>');
       var $newRating = $('<div class="gifRatingDiv"><center><img src="./assets/images/filmratings/' + response.data[i].rating + '.png"></div>')
       var $newButton = $('<button type="button" class="btn btn-outline-light favorite" id="' + response.data[i].id + '">Favorite</button>');
       $newCol.append($newImage);
@@ -76,7 +76,7 @@ function addMoreGifs(searchTerm) {
     for (var i = 10; i < total; i++){
       var $newCol = $('<div class="col-md-3 gifCard">');
       var $newImage = $('<div class="gifImageDiv"><img src="' + response.data[i].images.fixed_height_still.url + '" class="gifStill" data-gifAnimated="' + response.data[i].images.fixed_height.url + '"></div>');
-      var $newDate = $('<div class="gifUploadDiv">Upload Date: ' + response.data[i].import_datetime + '</div>');
+      var $newDate = $('<div class="gifUploadDiv">Upload Date: ' + moment((response.data[i].import_datetime).substring(0, 10)).format("MMMM D, YYYY") + '</div>');
       var $newRating = $('<div class="gifRatingDiv"><center><img src="./assets/images/filmratings/' + response.data[i].rating + '.png"></div>');
       var $newButton = $('<button type="button" class="btn btn-outline-light favorite" id="' + response.data[i].id + '">Favorite</button>');
       $newCol.append($newImage);

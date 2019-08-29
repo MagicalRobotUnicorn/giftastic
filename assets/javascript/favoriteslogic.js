@@ -19,7 +19,7 @@ function displayFavorites() {
     }).then(function (response) {
       var $newCol = $('<div class="col-md-3 gifCard">');
       var $newImage = $('<div class="gifImageDiv"><img src="' + response.data.images.fixed_height_still.url + '" class="gifStill" data-gifAnimated="' + response.data.images.fixed_height.url + '"></div>');
-      var $newDate = $('<div class="gifUploadDiv">Upload Date: ' + response.data.import_datetime + '</div>');
+      var $newDate = $('<div class="gifUploadDiv">Upload Date: ' + moment((response.data.import_datetime).substring(0, 10)).format("MMMM D, YYYY") + '</div>');
       var $newRating = $('<div class="gifRatingDiv"><center><img src="./assets/images/filmratings/' + response.data.rating + '.png"></div>')
       var $newButton = $('<button type="button" class="btn btn-outline-light unfavorite" id="' + response.data.id + '">Remove from Favorites</button>');
       $newCol.append($newImage);
