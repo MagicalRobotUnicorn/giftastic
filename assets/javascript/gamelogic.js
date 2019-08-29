@@ -1,52 +1,3 @@
-// Sorting Hat Functions
-
-// Houses for sorting hat function (location on giphy)
-var houses = {
-  "Hufflepuff": 'PMp40oEvNfKve',
-  "Slytherin": 'A1xhQcogWZAIg',
-  "Gryffindor": 'Jd4sezus42AjC',
-  "Ravenclaw": '69xNNUtTkQK9q'
-}
-
-// Ajax call to Harry Potter API for finding the House
-function sortingHat(){
-  var queryURL = 'https://www.potterapi.com/v1/sortingHat/?key=$2a$10$keI8PT9iiqnbBl/NUjDhZeDd9X1cVemSK.K5eOE7ZH0maFQH9dQ1K';
-
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).then(function(response){
-    displayHouse(response);
-  });
-}
-
-// Function to change the cardback image to the corresponding house through the giphy api
-function displayHouse(response) {
-  var queryURL = 'https://api.giphy.com/v1/gifs/' + houses[response] + '?api_key=T9x1MWUOUhdZlJPCkwFiuhWl4Rpcewza';
-
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }). then(function(response) {
-    $('#houseImage').attr('src', response.data.images.original.url);
-    flipCard();
-    $('#sortingButtons').html('<button type="button" class="btn btn-primary" id="returnHome" onclick="location.href=\'./index.html\';">Return Home</button>');
-  });
-}
-
-// Flip sorting hat function
-function flipCard() {
-  var userCard = document.getElementById('houseReveal');
-  userCard.classList.remove('flip-card-inner');
-  setTimeout(userCard.classList.add('flip-card-inner'), 2000);
-}
-
-// On Click function for sorting hat
-$('#clicktoSort').on("click", function() {
-  sortingHat();
-});
-
-
 // GIF Magic Functions
 
 // Function to find the relavant gifs on giphy
@@ -103,6 +54,7 @@ function findGifs(searchTerm) {
   });
 }
 
+// Function to add 10 more gifs to the page
 function addMoreGifs(searchTerm) {
   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=T9x1MWUOUhdZlJPCkwFiuhWl4Rpcewza&q=" + searchTerm;
   
@@ -149,18 +101,6 @@ function addMoreGifs(searchTerm) {
   });
 }
 
-// Flip sorting hat function
-function flipCard() {
-  var userCard = document.getElementById('houseReveal');
-  userCard.classList.remove('flip-card-inner');
-  setTimeout(userCard.classList.add('flip-card-inner'), 2000);
-}
-
-// On Click function for sorting hat
-$('#clicktoSort').on("click", function() {
-  sortingHat();
-});
-
 // Create buttons from a search term
 function createButton(value) {
 
@@ -181,6 +121,21 @@ function initialButtons() {
   for (var i =0; i < autoButtons.length; i++){
     createButton(autoButtons[i]);
   }
+}
+
+// Add favorite by id (writes to local storage)
+function addFavorite(id){
+
+  var storedNames = JSON.parse(localStorage.getItem("favoriteGifs"));
+
+  if (storedNames === null) {
+    storedNames = [];
+  }
+
+  storedNames.push(id);
+
+  localStorage.setItem("favoriteGifs", JSON.stringify(storedNames));
+  alert("Favorite Saved!");
 }
 
 // Initialization function
@@ -220,67 +175,3 @@ $("body").on("click", "button#prepareSpell.btn.btn-primary", function() {
   $('#spellInput').val('');
   createButton(newSpell);
 });
-
-function addFavorite(id){
-
-  var storedNames = JSON.parse(localStorage.getItem("favoriteGifs"));
-
-  if (storedNames === null) {
-    storedNames = [];
-  }
-  storedNames.push(id);
-
-  localStorage.setItem("favoriteGifs", JSON.stringify(storedNames));
-  alert("Favorite Saved!");
-  console.log(id);
-}
-
-
-
-
-// date added: use moment.js
-
-// Adding gifs to favorite section
-// button on top -> my favorites
-// button on each gif -> add to favorites
-
-// On clicking the add to favorites button:
-// The current names are unpacked
-// The name which was clicked is added to the collection
-// The collection is reserialized
-
-// local storage: the array
-// capture the gif id as a variable on the button
-// load that value into a function
-// rinse and repeat
-
-///////////////////////////////////////////
-
-// Diplay favorites page
-// De-serialize local storage
-// iterate through the loop
-// create a card for each gif id
-
-
-// function sortingHat(){
-//   var queryURL = 'https://www.potterapi.com/v1/sortingHat/?key=$2a$10$keI8PT9iiqnbBl/NUjDhZeDd9X1cVemSK.K5eOE7ZH0maFQH9dQ1K';
-
-//   $.ajax({
-//     url: queryURL,
-//     method: 'GET'
-//   }).then(function(response){
-//     displayHouse(response);
-//   });
-// }
-
-
-
-
-
-// var names = [];
-// names[0] = prompt("New member name?");
-// localStorage.setItem("names", JSON.stringify(names));
-
-// //...
-// var storedNames = JSON.parse(localStorage.getItem("names"));
-// using local storage
