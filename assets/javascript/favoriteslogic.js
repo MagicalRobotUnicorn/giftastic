@@ -14,6 +14,7 @@ function displayFavorites() {
     for (var i = 0; i < storedNames.length; i++){
 
       var queryURL = 'https://api.giphy.com/v1/gifs/' + storedNames[i] + '?api_key=T9x1MWUOUhdZlJPCkwFiuhWl4Rpcewza';
+      rowTotal++;
 
       $.ajax({
         url: queryURL,
@@ -29,7 +30,6 @@ function displayFavorites() {
         $newCol.append($newButton);
         $newCol.append($newDate);
         $newRow.append($newCol);
-        rowTotal++;
       });
 
       if (rowTotal > 2) {
